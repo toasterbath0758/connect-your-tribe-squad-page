@@ -1,0 +1,17 @@
+img.img.active {
+    display: block;
+    position: fixed;
+    /* z-index: 10; */
+
+    article.profile:nth-child(2) {
+    transform: translate(0, 100px);
+    }
+
+    .profile.info {
+        z-index: 10;
+    }
+}
+
+article:nth-child(2) {
+    /* position: absolute; */
+}

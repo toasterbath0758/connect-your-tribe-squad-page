@@ -2,9 +2,35 @@
 
 <h2>BLEHBLEHBLEH</h2>
 <ul>
+  <section class="grid-profile-section">
   {% for person in persons %}
-    <li><a href="/student/{{ person.id }}">{{ person.name }}</a></li>
+    <section class="profile-section">
+
+<article class="profile img">
+    <li class="center">
+      <figure>
+        <img class="img" src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=" alt="Profile picture">
+      </figure>
+    </li>
+</article>
+    
+<article class="profile info">
+  <ul>
+  <li class="center">
+    <a href="/student/{{ person.id }}">{{ person.name }}</a>
+  </li>
+    <li class="center">
+    <a href="/student/{{ person.id }}">{{ person.team }}</a>
+  </li>
+    <li class="center">
+    <a href="/student/{{ person.id }}">{{ person.team }}</a>
+  </li>
+</ul>
+</article>
+
+</section>
   {% endfor %}
+</section>
 </ul>
 
 {% render 'partials/foot.liquid', squads: squads %}
