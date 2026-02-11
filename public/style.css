@@ -3,6 +3,21 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url(/assets/Fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+/* zelf gemaakt font */
+@font-face {
+    font-family: PixerMCBixer;
+    src: url(./assets/Fonts/PixerMCBixer/PixerMCBixerV5-Regular.ttf);
+}
+main {
+    background: var(--background-color-1);
+    font-family: PixerMCBixer, Montserrat;
+}
+
 body {
     justify-content: center;
     place-self: center;
