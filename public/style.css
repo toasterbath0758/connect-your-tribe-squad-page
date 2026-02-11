@@ -21,6 +21,40 @@ main {
 body {
     justify-content: center;
     place-self: center;
+header {
+    display: none;
+    background: var(--background-color-1);
+    border-color: var(--border-color);
+    border-width: thick;
+    width: 20em;
+    height: 800%;
+    position: absolute;
+    left: 0;
+    top: 0;
+        section {
+            position: inherit;
+            top: 10em;
+            /* border-color: var(--border-color); */
+            border-width: thick;
+            justify-items: center;
+            align-content: start;
+        }
+
+        @media (min-width: 1800px) {
+            display: block;
+        }
+}
+
+fieldset {
+    border-style: none;
+    padding-left: 1em;
+}
+
+input {
+  margin: 0.5em;
+}
+
+
 }
 
 li {
