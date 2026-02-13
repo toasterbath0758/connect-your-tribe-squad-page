@@ -13,6 +13,14 @@
     font-family: PixerMCBixer;
     src: url(./assets/Fonts/PixerMCBixer/PixerMCBixerV5-Regular.ttf);
 }
+
+:root {
+    --background-color-1: black;
+    --background-color-2: white;
+    --border-color: lime;
+    --text-color: white;
+}
+
 main {
     background: var(--background-color-1);
     font-family: PixerMCBixer, Montserrat;
@@ -21,6 +29,9 @@ main {
 body {
     justify-content: center;
     place-self: center;
+    color: var(--text-color);
+}
+
 header {
     display: none;
     background: var(--background-color-1);
@@ -31,7 +42,7 @@ header {
     position: absolute;
     left: 0;
     top: 0;
-        section {
+        section.header {
             position: inherit;
             top: 10em;
             /* border-color: var(--border-color); */
@@ -63,6 +74,20 @@ input {
 }
 
 
+h1 {
+    padding-top: 1em;
+    font-size: 3em;
+        @media (min-width: 850px) {
+            font-size: 5em;
+        }
+}
+
+h2 {
+    padding-top: 0.5em;
+    font-size: 1.5em;
+        @media (min-width: 850px) {
+            font-size: 3em;
+        }
 }
 
 li {
@@ -77,17 +102,16 @@ a {
 
 section.grid-profile-section {
     display: grid;
-    justify-content: start;
 
-        @media (min-width: 450px) {
+    @media (min-width: 600px) {
         grid-template-columns: 1fr 1fr;
     }
 
-        @media (min-width: 650px) {
+    @media (min-width: 850px) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
-        @media (min-width: 850px) {
+    @media (min-width: 1000px) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
@@ -105,7 +129,7 @@ img.img.active {
     /* z-index: 10; */
 
     article.profile:nth-child(2) {
-    transform: translate(0, 100px);
+        transform: translate(0, 100px);
     }
 
     .profile.info {
@@ -113,20 +137,30 @@ img.img.active {
     }
 }
 
-article:nth-child(2) {
+/* article:nth-child(2) {
     /* position: absolute; */
-}
+
 
 .profile {
     align-content: start;
+    height: 10em;
+    width: 10em;
+    padding: 2em;
+    background: var(--background-color-1);
+    border: solid var(--border-color);
+    border-width: thick;
 }
 
 .info {
     justify-self: center;
-    background: green;
     width: 10em;
     height: 10em;
-    text-wrap: nowrap;
+    text-wrap: wrap;
+    border-top-width: 50%;
+
+    .center {
+        padding: 0.3em;
+    }
 }
 
 .img {
@@ -135,9 +169,5 @@ article:nth-child(2) {
     width: 10em;
     object-fit: cover;
     justify-self: center;
-    background-size: 80%;
-} 
-
-
-
-
+    border-bottom-width: 50%;
+}

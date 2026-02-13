@@ -96,13 +96,14 @@ app.get('/az', async function (request, response) {
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json()
 
+  // #######################
+
   // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
   // Toon eventueel alle data in de console
   // console.log(personResponseJSON)
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
   response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data
 })
 })
