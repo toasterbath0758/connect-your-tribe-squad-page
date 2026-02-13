@@ -45,6 +45,14 @@ header {
         }
 }
 
+.navKnop {
+    background: var(--background-color-1);
+    border-color: var(--border-color);
+    border-width: thick;
+    border-style: none;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
 fieldset {
     border-style: none;
     padding-left: 1em;

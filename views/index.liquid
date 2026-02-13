@@ -1,46 +1,28 @@
 {% render 'partials/head.liquid', title: 'Squad page' %}
 
-<section>
 <h2>BLEHBLEHBLEH</h2>
 </section>
+
 <header>
 <section>
-  <fieldset>
-  <legend>Choose your'e filter:</legend>
-
-  <div>
-    <input type="checkbox" id="optie-1"/>
-    <label for="optie-1">a-z</label>
-  </div>
-
-  <div>
-    <input type="checkbox" id="optie-2"/>
-    <label for="optie-2">z-a</label>
-  </div>
-
-  <div>
-    <input type="checkbox" id="optie-3"/>
-    <label for="optie-3">team</label>
-  </div>
-
-  <div>
-    <input type="checkbox" id="optie-4"/>
-    <label for="optie-4">squad</label>
-  </div>
-</fieldset>
-</header>
+<button class="navKnop">
+<a href="/az">a-z</a>
+</button>
 </section>
+</header>
+
 <ul>
-  
   <section class="grid-profile-section">
   {% for person in persons %}
     <section class="profile-section">
 
 <article class="profile img">
     <li class="center">
-      <figure>
+        {% if person.mugshot %}
         <img class="img" src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=" alt="Profile picture">
-      </figure>
+        {% else %}
+          <img class="img" src="default_mugshot.png">
+       {% endif %}
     </li>
 </article>
     
@@ -53,11 +35,16 @@
     <a href="/student/{{ person.id }}">{{ person.team }}</a>
   </li>
     <li class="center">
-    <a href="/student/{{ person.id }}">{{ person.team }}</a>
+    <a href="/student/{{ person.id }}">{{ person.vibe_emoji }}</a>
+  </li>
+      <li class="center">
+    <a href="/student/{{ person.id }}">@{{ person.github_handle }}</a>
+  </li>
+  <li class="center">
+    <a href="/student/{{ person.id }}">{{ person.id }}</a>
   </li>
 </ul>
 </article>
-
 </section>
   {% endfor %}
 </section>
