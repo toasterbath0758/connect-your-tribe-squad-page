@@ -56,6 +56,10 @@ header {
         }
 }
 
+section.nav {
+    padding: 1em;
+}
+
 .navKnop {
     background: var(--background-color-1);
     border-color: var(--border-color);
