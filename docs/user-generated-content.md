@@ -79,6 +79,10 @@ We gaan drie korte oefeningen doen, die steeds complexer worden. We beginnen met
 
 Maak als eerste oefening in simpele HTML een pagina die een bericht verstuurt naar een server. Maak een formulier, een tekstveld genaamd `message` en POST deze naar [TODO].
 
+#### Bronnen
+
+- [`<form>`: The Form element @ MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
+
 ### Oefening 2: een formulier met een POST én een server
 
 Om dit te maken, gaan we een pagina met een formulier toevoegen aan onze squad page (van vorige week). Hiermee kunnen we simpele berichten achterlaten.
@@ -89,13 +93,13 @@ Maak ook een nieuwe `GET` route aan in `server.js`, bijvoorbeeld naar `/berichte
 
 Laat in die view alle huidige berichten zien, in een Liquid `for` loop. Als het goed is, is deze nog leeg.
 
-Maak in die view ook een formulier aan. Geef het formulier `method="POST"` als attribuut. Voeg een invoerveld met de naam `message` en een submit button toe. Let op: alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
+Maak in die view ook een formulier aan. Geef het formulier `method="POST"` en `action="/berichten"` als attributen. Voeg een invoerveld met de naam `message` en een submit button toe. Let op: alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
 
-Voer `npm start` uit, open de pagina die je net aangemaakt hebt, en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen.
+Voer `npm start` uit, open de pagina die je net aangemaakt hebt (ga dus naar `/berichten` in je browser), en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen.
 
-Als het goed is, krijg je een foutmelding, dat je nog niet kunt `POST`en naar deze pagina. Dit komt doordat je nog geen `POST` route hebt klaargezet in je server. De server luistert alleen naar `GET` requests voor die URL.
+Als het goed is, krijg je een foutmelding, dat je nog niet kunt `POST`en naar deze pagina. Dit komt doordat je nog geen _`POST` route_ hebt aangemaakt in je server. De server luistert alleen naar _`GET` requests_ voor die URL.
 
-In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar bijvoorbeeld `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
+In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
 
 Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
 
@@ -146,16 +150,102 @@ app.post('/berichten', async function (request, response) {
 
 Deze manier heeft alleen nogal een groot nadeel: Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat waarschijnlijk niet handig is. Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Het principe is precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar je eigen server. En jouw server slaat dat op in Directus.
 
-### Oefening 3: een formulier met een POST, én een server, én Directus
-
-<!-- TODO -->
-
-### Bronnen
+#### Bronnen
 
 - [Basic routing in Express](https://expressjs.com/en/starter/basic-routing.html)
-- [`<form>`: The Form element @ MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 - [For loop in Liquid](https://liquidjs.com/tags/for.html)
+- [JS Arrays @ MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
+
+### Oefening 3: een formulier met een POST, én een server, én Directus
+
+Om de eerdere berichten ook te bewaren, kunnen we een database gebruiken, zoals Directus. Een simpele tabel met berichten, vind je op https://fdnd.directus.app/items/messages. Je kunt hierin als volgt filteren:
+
+- Bijvoorbeeld op alle berichten voor een team, https://fdnd.directus.app/items/messages?filter[for]=Team%20Rocket
+- Of voor een bepaalde squad, https://fdnd.directus.app/items/messages?filter[for]=1I & https://fdnd.directus.app/items/messages?filter[for]=1J
+- Of voor heel jaar 1, https://fdnd.directus.app/items/messages?filter[for]=FDND%20Jaar%201
+- Of wat je zelf ook maar bedenkt als filter, bijvoorbeeld https://fdnd.directus.app/items/messages?filter[for]=demo-16-02
+
+Elke `message` in onze database heeft een `id`, een `created` tijdstip, een `from`, een `text` en een `for` property. En elke message is net als een persoon rechtstreeks te bekijken: https://fdnd.directus.app/items/messages/2910:
+
+```json
+{
+  "data": {
+    "id": 2910,
+    "created": "2026-02-15T21:17:02.794Z",
+    "from": "Krijn",
+    "text": "Hoi!",
+    "for": "demo-16-02"
+  }
+}
+```
+
+In plaats van een simpele array aanmaken in onze server, lezen we dan `messages` uit Directus in:
+
+```javascript
+app.get('/berichten', async function (request, response) {
+
+  // Filter eerst de berichten die je wilt zien, net als bij personen
+  // Deze tabel wordt gedeeld door iedereen, dus verzin zelf een handig filter,
+  // bijvoorbeeld je teamnaam, je projectnaam, je person ID, de datum van vandaag, etc..
+  const params = {
+    'filter[for]': 'demo-16-februari',
+  }
+  
+  // Maak hiermee de URL aan, zoals we dat ook in de browser deden
+  const apiURL = 'https://fdnd.directus.app/items/squad?' + new URLSearchParams(params)
+  
+  // En haal de data op, via een GET request naar Directus
+  const messagesResponse = await fetch(apiURL)
+  
+  // Zet de JSON daarvan om naar een object
+  const messagesResponseJSON = await messagesResponse.json()
+  
+  // Die we vervolgens doorgeven aan onze view
+  response.render('messages.liquid', {
+    messages: messagesResponseJSON.data
+  })
+
+})
+```
+
+Het bewaren in Directus is iets ingewikkelder dan onze eerdere `messages.push()`. We kunnen in onze tabel een `for`, `from` en `text` opslaan, en dat doen we als volgt:
+
+```javascript
+app.post('/berichten', async function (request, response) {
+
+  // Stuur een POST request naar de messages tabel
+  // Een POST request bevat ook extra parameters, naast een URL
+  await fetch('https://fdnd.directus.app/items/messages', {
+
+    // Overschrijf de standaard GET method, want ook hier gaan we iets veranderen op de server
+    method: 'POST',
+
+    // Geef de body mee als JSON string
+    body: JSON.stringify({
+      // Dit is zodat we ons bericht straks weer terug kunnen vinden met ons filter
+      for: 'demo-16-februari',
+      // En dit is ons eerdere formulierveld
+      text: request.body.message
+    }),
+
+    // En vergeet deze HTTP headers niet: hiermee vertellen we de server dat we JSON doorsturen
+    // (In realistischere projecten zou je hier ook authentication headers of een sleutel meegeven)
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+
+  })
+
+})
+```
+
+That's it :) Verzin een eigen filter, en gebruik die om je eigen berichten op te slaan in onze Directus database. Herstart je server, en merk op dat de berichten gewoon bewaard blijven. Vet!
+
+#### Bronnen
+
+- [Directus API](https://directus.io/docs/api/items)
+- [JSON.stringify() @ MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 
 ## Kill Your Darlings (Ouch!)
 
