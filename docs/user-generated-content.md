@@ -52,7 +52,7 @@ Waarschijnlijk verandert door het versturen van dit formulier iets op de server,
 Een ander voorbeeld, waarmee je bijvoorbeeld een bericht kunt toevoegen aan een website:
 
 ```html
-<form action="TODO" method="POST">
+<form action="/nieuws/goud-en-zilver-op-de-500-meter" method="POST">
   <label>
     Bericht
     <textarea name="bericht"></textarea>
