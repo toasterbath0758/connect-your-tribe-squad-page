@@ -22,16 +22,44 @@ Maar eerst moeten we wat meer vertellen over _HTTP_.
 HTTP is een _protocol_ waarmee browsers tegen servers kunnen praten. HTTP maakt gebruik van URLs; adressen van _resources_, zoals HTML, CSS, afbeeldingen, fonts, JSON bestanden, etc. Een browser kan zo'n URL via HTTP binnenhalen (_fetchen_). En onze NodeJS server kan een URL via HTTP binnenhalen van bijvoorbeeld Directus. URLs voor je eigen server en website mag je zelf bepalen, via _routing_. URLs binnen Directus staan redelijk vast. Tot zover niks nieuws.
 
 ### `GET`
-Voor elke URL die je opvraagt, moet je ook bepalen met welke _method_ dat gebeurt. Standaard is dat `GET`. Elk adres dat je invoert in je browser, en elke `<a href="/een-url">` link die je bezoekt, zorgt voor een `GET` request. `GET` requests _halen alleen gegevens op_: `GET /something`, that's it.
+Voor elke URL die je opvraagt, moet je ook bepalen met welke _method_ dat gebeurt. Standaard is dat `GET`. Elk adres dat je invoert in je browser, en elke `<a href="/een-url">` link die je bezoekt, zorgt voor een `GET` request. `GET` requests _halen alleen gegevens op_: `GET /something`, that's it. Formulieren gebruiken standaard ook een GET method:
+
+```html
+<form action="/">
+  <label>
+    Zoeken
+    <input type="search" name="zoekterm">
+  </label>
+  <button type="submit">Zoeken maar!</button>
+</form>
+```
+
+Als je via dit zoekformulier zoekt op “fdnd”, zal de browser na het zoeken naar `/?zoekterm=fdnd` gaan, en een `GET` request uitvoeren. Dit formulier verandert in principe niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
 
 ### `POST`
-Bij het maken van een `<form action="/een-url">` kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets gaat veranderen. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
+Bij het maken van een `<form action="/een-url">` kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets gaat _veranderen_. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
 
-Als frontender heb je vooral te maken met `POST` requests als je formulieren ontwerpt en maakt. Bedenk hierbij dat eigenlijk alles wat iets verandert in een database een formulier nodig heeft. Ook als dat formulier niet als een standaard formulier met invoervelden is ontworpen. Denk hierbij aan “Add to cart” buttons, “Like” buttons, “Favorite” buttons, etc. Je houdt hier rekening mee als je een ontwerp omzet naar HTML.
+```html
+<form action="/product/3" method="POST">
+  <button type="submit" name="like">Dit vind ik leuk</button>
+</form>
+```
 
-🔎 Om het ingewikkelder te maken: niet elk `<form>` hoeft een `POST` te doen. Je kunt natuurlijk ook `GET` requests uitvoeren vanuit een formulier. Denk aan een zoekformulier met één `<input type="search">`, of een filter met radio's en checkboxjes; deze veranderen niks op de server, dus voor dit soort formulieren gebruik je `<form method="GET">`.
+Waarschijnlijk verandert door het versturen van dit formulier iets op de server, of in een database. Misschien wordt in het profiel van de bezoeker bijvoorbeeld bijgehouden welke producten leuk worden gevonden. Dit is wat groter dan de micro-interacties die we in Sprint 5 introduceerden.
 
-⏯️ En nog ingewikkelder: niet elke `<button>` hoeft altijd een `POST` request uit te voeren, of in een `<form>` te staan. Sommige knoppen voeren een micro-interactie uit, zoals je in Sprint 5 hebt geleerd. Hoe meer je werkt met formulieren en User Generated Content, hoe beter je leert inschatten wanneer je wat moet gebruiken.
+Een ander voorbeeld, waarmee je bijvoorbeeld een bericht kunt toevoegen aan een website:
+
+```html
+<form action="TODO" method="POST">
+  <label>
+    Bericht
+    <textarea name="bericht"></textarea>
+  </label>
+  <button type="submit">Laat een bericht achter</button>
+</form>
+```
+
+Als frontender heb je vooral te maken met `POST` requests als je formulieren ontwerpt en maakt. Bedenk hierbij dus dat eigenlijk alles wat iets verandert in een database een formulier nodig heeft. Ook als dat formulier niet als een standaard formulier met invoervelden is ontworpen. Denk hierbij aan “Add to cart” buttons, “Like” buttons, “Favorite” buttons, etc. Je houdt hier (in je breakdown) rekening mee als je een ontwerp omzet naar HTML.
 
 ### Bronnen
 
@@ -116,6 +144,8 @@ Pro-tip: maak een HTML prototype van de nieuwe concepten die jullie verzonnen he
 
 
 ### Bronnen
+
+<!-- minder maken, terug linken naar eerdere workshops van vorige weken -->
 
 - [Basic routing in Express](https://expressjs.com/en/starter/basic-routing.html)
 - [Advanced routing in Express](https://expressjs.com/en/guide/routing.html)
