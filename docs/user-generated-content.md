@@ -68,7 +68,7 @@ Als frontender heb je vooral te maken met `POST` requests als je formulieren ont
 - [What's HTTP?](https://wizardzines.com/comics/whats-http/)
 - [Anatomy of an HTTP request](https://wizardzines.com/comics/anatomy-http-request/)
 - [HTTP request methods](https://wizardzines.com/comics/request-methods-1/)
-- [HTTP status codes](https://wizardzines.com/comics/status-codes/)
+- 💪 [HTTP status codes](https://wizardzines.com/comics/status-codes/)
 
 
 ## Oefenen met een POST
