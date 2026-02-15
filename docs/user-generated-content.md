@@ -43,7 +43,9 @@ Als frontender heb je vooral te maken met `POST` requests als je formulieren ont
 
 ## Oefenen met een POST
 
-Om te oefenen, gaan we een pagina met een formulier toevoegen aan onze squad page. Hiermee kunnen we berichten achterlaten.
+Maak als eerste oefening in simpele HTML een pagina die een bericht verstuurt naar een server. Maak een formulier, een tekstveld genaamd `message` en POST deze naar [TODO].
+
+Om hierna te oefenen in onze eigen server, gaan we een pagina met een formulier toevoegen aan onze squad page. Hiermee kunnen we berichten achterlaten.
 
 Maak in je squad-page repository in `server.js` een nieuwe `messages` _array_ aan. Hierin gaan we berichten opslaan.
 
