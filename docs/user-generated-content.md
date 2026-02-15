@@ -134,7 +134,8 @@ app.post('/berichten', async function (request, response) {
 {% endfor %}
 
 <form method="POST" action="/berichten">
-   <label>Nieuw bericht:
+   <label>
+     Nieuw bericht:
      <input type="text" name="message" required>
    </label>
    <button type="submit">Voeg toe!</button>
