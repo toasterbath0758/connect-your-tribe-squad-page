@@ -83,6 +83,7 @@ Maak als eerste oefening in simpele HTML een pagina die een bericht verstuurt na
 
 - [`<form>`: The Form element @ MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
 
+
 ### Oefening 2: een formulier met een POST én een server
 
 Om dit te maken, gaan we een pagina met een formulier toevoegen aan onze squad page (van vorige week). Hiermee kunnen we simpele berichten achterlaten.
@@ -166,7 +167,7 @@ Om de eerdere berichten ook te bewaren, kunnen we een database gebruiken, zoals 
 - Of voor heel jaar 1, https://fdnd.directus.app/items/messages?filter[for]=FDND%20Jaar%201
 - Of wat je zelf ook maar bedenkt als filter, bijvoorbeeld https://fdnd.directus.app/items/messages?filter[for]=demo-16-02
 
-Elke `message` in onze database heeft een `id`, een `created` tijdstip, een `from`, een `text` en een `for` property. En elke message is net als een persoon rechtstreeks te bekijken: https://fdnd.directus.app/items/messages/2910:
+Elke `message` in onze database heeft een `id`, een `created` tijdstip, een `from`, een `text` en een `for` property. En elke message is net als een `person` rechtstreeks te bekijken: https://fdnd.directus.app/items/messages/2910:
 
 ```json
 {
@@ -193,7 +194,7 @@ app.get('/berichten', async function (request, response) {
   }
   
   // Maak hiermee de URL aan, zoals we dat ook in de browser deden
-  const apiURL = 'https://fdnd.directus.app/items/squad?' + new URLSearchParams(params)
+  const apiURL = 'https://fdnd.directus.app/items/messages?' + new URLSearchParams(params)
   
   // En haal de data op, via een GET request naar Directus
   const messagesResponse = await fetch(apiURL)
@@ -209,7 +210,7 @@ app.get('/berichten', async function (request, response) {
 })
 ```
 
-Het bewaren in Directus is iets ingewikkelder dan onze eerdere `messages.push()`. We kunnen in onze tabel een `for`, `from` en `text` opslaan, en dat doen we als volgt:
+Het bewaren in Directus is iets ingewikkelder dan onze `messages.push()` uit de tweede oefening. We kunnen in onze tabel een `for`, `from` en `text` opslaan, en dat doen we als volgt:
 
 ```javascript
 app.post('/berichten', async function (request, response) {
@@ -240,7 +241,11 @@ app.post('/berichten', async function (request, response) {
 })
 ```
 
-That's it :) Verzin een eigen filter, en gebruik die om je eigen berichten op te slaan in onze Directus database. Herstart je server, en merk op dat de berichten gewoon bewaard blijven. Vet!
+That's it :)
+
+Verzin een eigen filter, en gebruik die om je eigen berichten op te slaan in onze Directus database. Herstart je server, en merk op dat de berichten gewoon bewaard blijven. Vet!
+
+Als dit allemaal gelukt is, wordt het tijd om weer met je team aan de slag te gaan..
 
 #### Bronnen
 
