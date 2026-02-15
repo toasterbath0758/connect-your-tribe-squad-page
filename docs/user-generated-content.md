@@ -3,7 +3,7 @@
 
 ## User Generated Content
 
-In deze workshop leer je hoe je data naar Directus kan posten met behup van een formulier.
+In deze workshop leer je hoe je data in Directus kunt opslaan met behup van een formulier en je eigen NodeJS server.
 
 ### Aanpak
 
