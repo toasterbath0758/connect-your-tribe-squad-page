@@ -49,15 +49,15 @@ Bij het maken van een `<form action="/een-url">` kun je de method veranderen naa
 
 Waarschijnlijk verandert door het versturen van dit formulier iets op de server, of in een database. Misschien wordt in het profiel van de bezoeker bijvoorbeeld bijgehouden welke producten leuk worden gevonden. Dit is wat groter dan de micro-interacties die we in Sprint 5 introduceerden.
 
-Een ander voorbeeld, waarmee je bijvoorbeeld een bericht kunt toevoegen aan een website:
+Een ander voorbeeld, waarmee je bijvoorbeeld een reactie kunt achterlaten onder een nieuwsbericht. Ook dit zal iets in een database toevoegen, en ook voor andere bezoekers van dat nieuwsbericht de data veranderen:
 
 ```html
 <form action="/nieuws/goud-en-zilver-op-de-500-meter" method="POST">
   <label>
-    Bericht
-    <textarea name="bericht"></textarea>
+    Reactie
+    <textarea name="reactie"></textarea>
   </label>
-  <button type="submit">Laat een bericht achter</button>
+  <button type="submit">Laat je reactie achter</button>
 </form>
 ```
 
@@ -73,17 +73,23 @@ Als frontender heb je vooral te maken met `POST` requests als je formulieren ont
 
 ## Oefenen met een POST
 
+We gaan drie korte oefeningen doen, die steeds complexer worden. We beginnen met een simpel formulier met een POST, daarna gaan we dat in onze eigen server doen, en als laatste gaan we zorgen dat we ook data in Directus kunnen veranderen.
+
+### Oefening 1: een formulier met een POST
+
 Maak als eerste oefening in simpele HTML een pagina die een bericht verstuurt naar een server. Maak een formulier, een tekstveld genaamd `message` en POST deze naar [TODO].
 
-Om hierna te oefenen in onze eigen server, gaan we een pagina met een formulier toevoegen aan onze squad page. Hiermee kunnen we berichten achterlaten.
+### Oefening 2: een formulier met een POST én een server
+
+Om dit te maken, gaan we een pagina met een formulier toevoegen aan onze squad page (van vorige week). Hiermee kunnen we simpele berichten achterlaten.
 
 Maak in je squad-page repository in `server.js` een nieuwe `messages` _array_ aan. Hierin gaan we berichten opslaan.
 
-Maak ook een nieuwe `GET` route aan in `server.js`, bijvoorbeeld naar `/berichten`. Laat op deze route een nieuwe view renderen, bijvoorbeeld `messages.liquid`, en geef de `messages` array mee aan die view.
+Maak ook een nieuwe `GET` route aan in `server.js`, bijvoorbeeld naar `/berichten`. Maak een nieuwe view aan, bijvoorbeeld `messages.liquid`, en laat op deze route die view renderen. Geef de `messages` array mee aan die view.
 
-Maak in `messages.liquid` een formulier aan. Geef het formulier `method="POST"` als attribuut. Voeg een invoerveld met de naam `message` en een submit button toe. Alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
+Laat in die view alle huidige berichten zien, in een Liquid `for` loop. Als het goed is, is deze nog leeg.
 
-Laat onder het formulier alle huidige berichten zien, in een Liquid `for` loop. Als het goed is, is deze nog leeg.
+Maak in die view ook een formulier aan. Geef het formulier `method="POST"` als attribuut. Voeg een invoerveld met de naam `message` en een submit button toe. Let op: alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
 
 Voer `npm start` uit, open de pagina die je net aangemaakt hebt, en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen.
 
@@ -93,9 +99,46 @@ In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en 
 
 Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
 
-Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat niet ideaal is. Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Hier komen we later vandaag aan toe. Het principe is alleen precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar een server. Wat die server er vervolgens mee doet, verschilt natuurlijk per website.
+<details>
+<summary>Gebruik deze code als het je niet lukt</summary>
+```javascript
+// Dit voeg je toe aan server.js
+let messages = []
 
-Daarom gaan we eerst een nieuwe website ontwerpen.
+app.get('/berichten', async function (request, response) {
+  response.render('messages.liquid', {
+    messages: messages
+  })
+})
+
+app.post('/berichten', async function (request, response) {
+  messages.push(request.body.message)
+  response.redirect(303, '/berichten')
+})
+```
+```liquid
+{# Dit staat in messages.liquid #}
+{% for message in messages %}
+
+   <p>{{ message }}</p>
+
+{% endfor %}
+
+<form method="POST" action="/berichten">
+
+   <label>Nieuw bericht:
+     <input type="text" name="message" required>
+   </label>
+   
+   <button type="submit">Voeg toe!</button>
+
+</form>
+```
+</details>
+
+Deze manier heeft alleen nogal een groot nadeel: Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat waarschijnlijk niet handig is. Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Het principe is precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar je eigen server. En jouw server slaat dat op in Directus.
+
+### Oefening 3: een formulier met een POST, én een server, én Directus
 
 ### Bronnen
 
