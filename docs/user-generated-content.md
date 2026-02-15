@@ -101,44 +101,53 @@ Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.bo
 
 <details>
 <summary>Gebruik deze code als het je niet lukt</summary>
+
 ```javascript
 // Dit voeg je toe aan server.js
-let messages = []
 
+// 1. Maak een lege array aan
+let messagesArray = []
+
+// 2. Luister naar GET requests op /berichten
 app.get('/berichten', async function (request, response) {
+  // Render meteen de messages view, en geef de messages array mee
   response.render('messages.liquid', {
-    messages: messages
+    messages: messagesArray
   })
 })
 
+// 3. Luister naar POST requests, ook op /berichten
 app.post('/berichten', async function (request, response) {
-  messages.push(request.body.message)
+  // Voeg de inhoud van het tekstveld toe aan de array
+  messagesArray.push(request.body.message)
+  // En stuur de browser terug naar /berichten, waar die een GET request uitvoert
+  // De browser komt hierdoor dus weer “terug” bij 2, waardoor de view opnieuw gerenderd wordt
   response.redirect(303, '/berichten')
 })
 ```
+
 ```liquid
 {# Dit staat in messages.liquid #}
+
 {% for message in messages %}
-
    <p>{{ message }}</p>
-
 {% endfor %}
 
 <form method="POST" action="/berichten">
-
    <label>Nieuw bericht:
      <input type="text" name="message" required>
    </label>
-   
    <button type="submit">Voeg toe!</button>
-
 </form>
 ```
+
 </details>
 
 Deze manier heeft alleen nogal een groot nadeel: Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat waarschijnlijk niet handig is. Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Het principe is precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar je eigen server. En jouw server slaat dat op in Directus.
 
 ### Oefening 3: een formulier met een POST, én een server, én Directus
+
+<!-- TODO -->
 
 ### Bronnen
 
