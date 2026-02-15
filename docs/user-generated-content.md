@@ -256,14 +256,14 @@ Als dit allemaal gelukt is, wordt het tijd om weer met je team aan de slag te ga
 
 Itereren betekent het herhalen en verbeteren van een ontwerp of product, op basis van feedback en nieuwe inzichten. Dit zorgt ervoor dat je stap voor stap tot een beter resultaat komt. In de _development lifecycle_ is iteratie essentieel: het zorgt voor een continue cyclus van ontwerpen, ontwikkelen, testen en verbeteren, wat leidt tot een gebruiksvriendelijker en beter functionerend eindproduct.
 
-De week voor de vakantie hebben jullie hier al mee geoefend: Jullie hebben zes ideeën geschetst voor de squad page en één daarvan verder uitgewerkt in code. Vandaag maken jullie opnieuw een iteratie, deze keer binnen het team.
+Vorige week hebben jullie hier al mee geoefend: Jullie hebben zes ideeën geschetst voor de squad page en één daarvan verder uitgewerkt in code. Vandaag maken jullie opnieuw een iteratie, deze keer binnen het team.
 
 ![](convergeren-divergeren.png)
 
 
 ### Maak één ontwerp
 
-Bekijk binnen je team elkaars gemaakte squad pages zorgvuldig, als jullie dat nog niet hebben gedaan. Besluit daarna met welk concept jullie doorgaan deze week. Bespreek welke goede ideeën uit de andere concepten jullie zouden kunnen samenvoegen.
+Bekijk binnen je team elkaars gemaakte squad pages [zorgvuldig en geef elkaar feedback](https://github.com/fdnd-task/connect-your-tribe-squad-page/blob/main/docs/code-design-review-design-squadpage.md#analyseer-het-gemaakte-werk), als jullie dat nog niet hebben gedaan. Besluit daarna met welk concept jullie doorgaan deze week. Bespreek welke goede ideeën uit de andere concepten jullie zouden kunnen samenvoegen.
 
 ⚠️ WARNING: Het kan pijnlijk zijn om los te laten waar je aan hebt gewerkt, maar trust the process. Door te itereren wordt het werk beter!
 
@@ -282,7 +282,7 @@ Ook de foto van 'u bent nu hier' aanpassen en hier plaatsen, maar dan het pijltj
 
 Kies één persoon uit jullie team die de nieuwe [team-squad-page repository](https://github.com/fdnd-task/connect-your-tribe-team-squad-page) forkt. Deze persoon voegt de rest van het team toe als _Collaborators_. Let op: dit is dus _niet_ de bestaande squad-page repository, waar je tot nu toe in werkte, maar een nieuwe.
 
-Clone daarna allemaal _die_ fork, en onderzoek lokaal hoe deze repository werkt. Gebruik `npm install` en `npm start` om de site bij jou lokaal te laten werken, en help elkaar als je er niet uit komt. Er zit wat voorbeeld code in waarmee je gegevens op kunt slaan in onze API. Dit gebeurt via een `POST` request (`fetch()`) naar Directus. Waarschijnlijk heeft jullie idee ook zoiets nodig.
+Clone daarna allemaal _die_ fork, en onderzoek lokaal hoe deze repository werkt. Gebruik `npm install` en `npm start` om de site bij jou lokaal te laten werken, en help elkaar als je er niet uit komt. Er zit wat voorbeeld code in waarmee je gegevens op kunt slaan in onze `messages` API. Dit gebeurt via een `POST` request (`fetch()`) naar Directus. Waarschijnlijk heeft jullie idee ook zoiets nodig.
 
 Bedenk samen hoe jullie het werk gaan verdelen en uit gaan voeren deze week. Maak behapbare taken en issues aan, en verdeel het werk eerlijk binnen het team. Oefen met het opsplitsen van grote taken in kleinere, zodat je taken van bijvoorbeeld 1 tot 2 uur overhoudt. Denk na over de volgorde van werk, en hoe de verschillende fases van de development lifecycle in taken terugkomen. Hoe gaan jullie om met testen? En hoe met integreren? Maak duidelijke afspraken en gebruik _issue assignment_ als dat jullie handig lijkt. Denk nog eens goed aan wat je na Sprint 4 wilde verbeteren, en pas dat nu toe. Ook hierbij: help elkaar om verder te komen, wees open over wat je wel en (nog) niet kunt, en gebruik deze week om meer te leren over het werken met NodeJS, JSON APIs, Liquid en dynamische data.
 
@@ -292,18 +292,4 @@ Pro-tip: maak een HTML prototype van de nieuwe concepten die jullie verzonnen he
 
 💪 En wil je iets veranderen of toevoegen in het `custom` field van een `person`? Dan heb je bij Directus [een `PATCH` request](https://directus.io/docs/api/items#update-an-item) nodig.
 
-
-### Bronnen
-
-<!-- minder maken, terug linken naar eerdere workshops van vorige weken -->
-
-- [Basic routing in Express](https://expressjs.com/en/starter/basic-routing.html)
-- [Advanced routing in Express](https://expressjs.com/en/guide/routing.html)
-- [The Liquid Template Language](https://liquidjs.com/tutorials/intro-to-liquid.html)
-- [Liquid Filters](https://liquidjs.com/filters/overview.html)
-- [Liquid Tags](https://liquidjs.com/tags/overview.html)
-- [Directus Docs](https://directus.io/docs/api)
-- [Express Docs](https://expressjs.com/en/5x/api.html)
-- [Integreren met Render (Sprint 7)](https://github.com/fdnd-task/connect-your-tribe-profile-card/blob/main/docs/visitekaartje-met-nodejs.md#visitekaartje-integreren-en-live-testen)
-- [Partial commits in GitHub Desktop](https://github.blog/news-insights/product-news/partial-commits-in-github-for-windows/)
-- [Committing and reviewing changes to your project in GitHub Desktop](https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop)
+Zet 'm op!
