@@ -66,6 +66,7 @@ Hieronder staat een voorbeeld van een formulier waarmee je een reactie kunt acht
 Als frontender heb je vooral te maken met `POST` requests als je formulieren ontwerpt en maakt. Bedenk hierbij dus dat eigenlijk alles wat iets verandert in een database een formulier nodig heeft. Ook als dat formulier niet als een standaard formulier met invoervelden is ontworpen. Denk hierbij aan “Add to cart” buttons, “Like” buttons, “Favorite” buttons, etc. Je houdt hier (in je breakdown) rekening mee als je een ontwerp omzet naar HTML.
 
 ### Bronnen
+Met behulp van schetsen legt Julia Evans uit hoe HTTP werkt:
 
 - [What's HTTP?](https://wizardzines.com/comics/whats-http/)
 - [Anatomy of an HTTP request](https://wizardzines.com/comics/anatomy-http-request/)
