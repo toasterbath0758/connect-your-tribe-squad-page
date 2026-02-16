@@ -95,23 +95,21 @@ en een tekstveld genaamd `message` en POST deze naar [TODO].
 
 ### Oefening 2: een formulier met een POST én een server
 
-Om dit te maken, gaan we een pagina met een formulier toevoegen aan onze squad page (van vorige week). Hiermee kunnen we simpele berichten achterlaten.
+In de oefening gaan je een pagina met een formulier toevoegen aan je squad page om een bericht achter te laten.
 
-Maak in je squad-page repository in `server.js` een nieuwe `messages` _array_ aan. Hierin gaan we berichten opslaan.
+1. Maak eerst in je `server.js` een nieuwe `messages` _array_ aan. Dit gaan we gebruiken om de berichten in op te slaan.
 
-Maak ook een nieuwe `GET` route aan in `server.js`, bijvoorbeeld naar `/berichten`. Maak een nieuwe view aan, bijvoorbeeld `messages.liquid`, en laat op deze route die view renderen. Geef de `messages` array mee aan die view.
+2. Maak ook een nieuwe `GET` route aan in `server.js`, bijvoorbeeld naar `/berichten`. Maak een nieuwe view aan, bijvoorbeeld `messages.liquid`, en laat op deze route die view renderen. Geef aan de `messages.liquid` de array mee zodat je die in de view kan tonen.
 
-Laat in die view alle huidige berichten zien, in een Liquid `for` loop. Als het goed is, is deze nog leeg.
+3. Laat in die view alle huidige berichten zien. Hiervoor moet je een `for` loop gebruiken in het liquid file. Als het goed is, is deze nog leeg.
 
-Maak in die view ook een formulier aan. Geef het formulier `method="POST"` en `action="/berichten"` als attributen. Voeg een invoerveld met de naam `message` en een submit button toe. Let op: alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
+4. Maak in die view ook een formulier aan. Geef het formulier `method="POST"` en `action="/berichten"` als attributen. Voeg een invoerveld met de naam `message` en een submit button toe. Let op: alleen formuliervelden met een `name` attribuut worden in een `POST` request meegestuurd door de browser.
 
-Voer `npm start` uit, open de pagina die je net aangemaakt hebt (ga dus naar `/berichten` in je browser), en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen.
-
-Als het goed is, krijg je een foutmelding, dat je nog niet kunt `POST`en naar deze pagina. Dit komt doordat je nog geen _`POST` route_ hebt aangemaakt in je server. De server luistert alleen naar _`GET` requests_ voor die URL.
+5. Voer `npm start` uit, open de pagina die je net aangemaakt hebt (ga dus naar `/berichten` in je browser), en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen. Als het goed is, krijg je een foutmelding, dat je nog niet kunt `POST`en naar deze pagina. Dit komt doordat je nog geen _`POST` route_ hebt aangemaakt in je server. De server luistert alleen naar _`GET` requests_ voor die URL.
 
 In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
 
-Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
+💪 Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
 
 <details>
 <summary>Gebruik deze code als het je niet lukt</summary>
