@@ -21,6 +21,7 @@ Maar eerst moeten we wat meer vertellen over _HTTP_.
 
 HTTP is een _protocol_ waarmee browsers tegen servers kunnen praten. HTTP maakt gebruik van URLs; adressen van _resources_, zoals HTML, CSS, afbeeldingen, fonts, JSON bestanden, etc. Een browser kan zo'n URL via HTTP binnenhalen (_fetchen_). Onze NodeJS server kan een URL ook via HTTP binnenhalen van bijvoorbeeld Directus. URLs voor je eigen server en website mag je zelf bepalen, via _routing_. De URLs van Directus naar de API staan redelijk vast. Tot zover niks nieuws.
 
+Hieronder staat een tekening van hoe het HTTP _protocol_ werk. Een website doet een _HTTP request_ naar een server voor een kattenplaatje. De server geeft een _responsce_ met het betreffende plaatje zodat de browser het kan laten zien:  
 <img width="948" height="506" alt="image" src="https://github.com/user-attachments/assets/1a7de42e-d8fe-4d70-9178-c7f7027c213b" />
 
 ### `GET`
