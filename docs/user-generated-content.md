@@ -21,7 +21,8 @@ Maar eerst moeten we wat meer vertellen over _HTTP_.
 
 HTTP is een _protocol_ waarmee browsers tegen servers kunnen praten. HTTP maakt gebruik van URLs; adressen van _resources_, zoals HTML, CSS, afbeeldingen, fonts, JSON bestanden, etc. Een browser kan zo'n URL via HTTP binnenhalen (_fetchen_). Onze NodeJS server kan een URL ook via HTTP binnenhalen van bijvoorbeeld Directus. URLs voor je eigen server en website mag je zelf bepalen, via _routing_. De URLs van Directus naar de API staan redelijk vast. Tot zover niks nieuws.
 
-Hieronder staat een tekening van hoe het HTTP _protocol_ werkt. Een website doet een _HTTP request_ naar een server voor een kattenplaatje. De server geeft een _responsce_ met het betreffende plaatje zodat de browser het kan laten zien:  
+Hieronder staat een tekening van hoe het HTTP _protocol_ werkt. Een website doet een _HTTP request_ naar een server voor een kattenplaatje. De server geeft een _response_ met het betreffende plaatje, zodat de browser het kan laten zien:  
+
 <img width="948" height="506" alt="image" src="https://github.com/user-attachments/assets/1a7de42e-d8fe-4d70-9178-c7f7027c213b" />
 
 ### `GET`
@@ -37,7 +38,7 @@ Voor elke URL die je opvraagt, moet je ook bepalen met welke _method_ dat gebeur
 </form>
 ```
 
-Als je met dit zoekformulier op “fdnd” zoekt, zal de browser na het kliken op de button naar de `action="/"` gaan en de query parameter /?zoekterm=fdnd` toevoegen, en een `GET` request uitvoeren. Dit formulier verandert niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
+Als je met dit zoekformulier op “fdnd” zoekt, zal de browser na het klikken op de button naar de `action="/"` gaan en de _query parameter_ `zoekterm=fdnd` toevoegen, en een `GET` request uitvoeren. In je adresbalk staat dan `/?zoekterm=fdnd`. Dit formulier verandert niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
 
 ### `POST`
 Bij het maken van een formulier kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets naar de server gaat sturen. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
@@ -50,7 +51,7 @@ Bij het maken van een formulier kun je de method veranderen naar `method="POST"`
 
 Waarschijnlijk verandert door het versturen van dit formulier iets op de server, of in een database. Misschien wordt in het profiel van de bezoeker bijvoorbeeld bijgehouden welke producten leuk worden gevonden. Dit is wat groter dan de micro-interacties die we in Sprint 5 introduceerden.
 
-Hieronder staat een voorbeeld van een formulier waarmee je een reactie kunt achterlaten onder een nieuwsbericht. Dit zal iets in een database toevoegen <!--, als je daarna deze pagina weer laadt krijg je een extra daarna ook voor andere bezoekers van dat nieuwsbericht de data veranderen-->:
+Hieronder staat een voorbeeld van een formulier waarmee je een reactie kunt achterlaten onder een nieuwsbericht. Dit zal iets in een database toevoegen:
 
 ```html
 <form action="/nieuws/goud-en-zilver-op-de-500-meter" method="POST">
@@ -78,14 +79,15 @@ We gaan drie korte oefeningen doen, die steeds complexer worden. We beginnen met
 
 ### Oefening 1: een formulier met een POST
 
-Maak een simpele HTML pagin aan in je Learning Journal. 
+Maak een simpele HTML pagina aan in je Learning Journal. 
 
-Voeg een formulier met de `method` `POST` toe
+Voeg een formulier met `method="POST"` toe.
 
-Voeg een `action` toe naar de url `https://krijnhoetmer.nl/fdnd` 
+Voeg een `action` toe naar de URL `https://krijnhoetmer.nl/fdnd`.
 
-en een tekstveld genaamd `message` en POST deze naar [TODO].
+Voeg een tekstveld genaamd `message` toe.
 
+Test het formulier door deze te versturen: _User Generated Content_!
 
 
 #### Bronnen
@@ -95,7 +97,7 @@ en een tekstveld genaamd `message` en POST deze naar [TODO].
 
 ### Oefening 2: een formulier met een POST én een server
 
-In de oefening gaan je een pagina met een formulier toevoegen aan je squad page om een bericht achter te laten.
+In deze oefening ga je een pagina met een formulier toevoegen aan je squad page om een bericht achter te laten.
 
 1. Maak eerst in je `server.js` een nieuwe `messages` _array_ aan. Dit gaan we gebruiken om de berichten in op te slaan.
 
@@ -109,7 +111,9 @@ In de oefening gaan je een pagina met een formulier toevoegen aan je squad page 
 
 7. In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
 
-💪 Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
+8. Maak je data dynamisch, door in de `POST` route nu `request.body.message` toe te voegen aan de `messages` array. En test of je allereerste eigen `User Generated Content` app werkt.
+
+9. Herstart je server en kijk wat er is gebeurd..
 
 <details>
 <summary>Gebruik deze code als het je niet lukt</summary>
@@ -156,7 +160,9 @@ app.post('/berichten', async function (request, response) {
 
 </details>
 
-Deze manier heeft alleen nogal een groot nadeel: Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat waarschijnlijk niet handig is. Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Het principe is precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar je eigen server. En jouw server slaat dat op in Directus.
+Deze manier heeft dus nogal een groot nadeel: Elke keer dat je je server herstart, wordt de `messages` array opnieuw aangemaakt. Je begint in dit geval dus steeds met een schone lei, wat waarschijnlijk niet handig is.
+
+Een volgende stap is deze data opslaan in een database, bijvoorbeeld via onze WHOIS API. Het principe is precies hetzelfde: via een `<form>` en een `POST` route stuur je gegevens vanuit de browser naar je eigen server. En jouw server slaat dat op in Directus.
 
 #### Bronnen
 
@@ -167,7 +173,7 @@ Deze manier heeft alleen nogal een groot nadeel: Elke keer dat je je server hers
 
 ### Oefening 3: een formulier met een POST, én een server, én Directus
 
-Om de eerdere berichten ook te bewaren, kunnen we een database gebruiken, zoals Directus. Een simpele tabel met berichten, vind je op https://fdnd.directus.app/items/messages. Je kunt hierin als volgt filteren:
+Om de eerdere berichten ook te bewaren, kunnen we een database gebruiken, zoals Directus. Een simpele database met berichten, vind je op https://fdnd.directus.app/items/messages. Je kunt hierin als volgt filteren:
 
 - Bijvoorbeeld op alle berichten voor een team, https://fdnd.directus.app/items/messages?filter[for]=Team%20Rocket
 - Of voor een bepaalde squad, https://fdnd.directus.app/items/messages?filter[for]=1I & https://fdnd.directus.app/items/messages?filter[for]=1J
@@ -194,7 +200,7 @@ In plaats van een simpele array aanmaken in onze server, lezen we dan `messages`
 app.get('/berichten', async function (request, response) {
 
   // Filter eerst de berichten die je wilt zien, net als bij personen
-  // Deze tabel wordt gedeeld door iedereen, dus verzin zelf een handig filter,
+  // Deze database wordt gedeeld door iedereen, dus verzin zelf een handig filter,
   // bijvoorbeeld je teamnaam, je projectnaam, je person ID, de datum van vandaag, etc..
   const params = {
     'filter[for]': 'demo-16-februari',
@@ -217,12 +223,12 @@ app.get('/berichten', async function (request, response) {
 })
 ```
 
-Het bewaren in Directus is iets ingewikkelder dan onze `messages.push()` uit de tweede oefening. We kunnen in onze tabel een `for`, `from` en `text` opslaan, en dat doen we als volgt:
+Het bewaren in Directus is iets ingewikkelder dan onze `messages.push()` uit de tweede oefening. We kunnen in onze database een `for`, `from` en `text` opslaan, en dat doen we als volgt:
 
 ```javascript
 app.post('/berichten', async function (request, response) {
 
-  // Stuur een POST request naar de messages tabel
+  // Stuur een POST request naar de messages database
   // Een POST request bevat ook extra parameters, naast een URL
   await fetch('https://fdnd.directus.app/items/messages', {
 
@@ -276,6 +282,8 @@ Bekijk binnen je team elkaars gemaakte squad pages [zorgvuldig en geef elkaar fe
 
 Schets allemaal 3 nieuwe ideeën op papier, op basis van wat jullie de afgelopen weken hebben geleerd. Omdat _User Generated Content_ deze week centraal staat, is het ook de bedoeling dat jullie iets bedenken waarmee je content _toe kunt voegen_ aan je squad page. Denk bijvoorbeeld aan Likes uitdelen, berichten bij iemand, een team of een hele squad achterlaten, of iets waarmee je verschillende teams vrijdag kunt beoordelen.
 
+💡 Voor al deze voorbeelden kun je de `messages` database en een eigen combinatie van `for`, `from` en `text` gebruiken. Ga hier creatief mee om. Gebruik bijvoorbeeld de naam van je team, gecombineerd met een `person.id` om een like op te slaan voor jullie squad page: `for` wordt dan `${teamName}-${person.id}`. Een 'message' is niets meer dan iets wat je op kunt slaan en weer kunt opvragen. Bestaat dit item in de database? Dan heeft die person een like. Bestaat dit item nog niet? Dan heeft die person nog geen like.
+
 Kies samen één schets en werk dit verder uit. Maak eerst een grove schets en werk dit eventueel uit in een hi-fi schets of in Figma. Deze week gaan jullie samen verder met dit nieuwe ontwerp.
 
 Werk ook [een Wireflow uit voor de interacties](https://github.com/fdnd-task/connect-your-tribe-squad-page/blob/main/docs/filteren-en-sorteren.md#wireflow-schetsen), en overleg over jullie [URL design](https://github.com/fdnd-task/connect-your-tribe-squad-page/blob/main/docs/filteren-en-sorteren.md#url-design).
@@ -297,6 +305,6 @@ Zorg dat je kleine commits maakt, en vaak pusht. Leer jezelf het gebruik van _Pa
 
 Pro-tip: maak een HTML prototype van de nieuwe concepten die jullie verzonnen hebben, zodat je snel kunt testen of je ook echt iets op kunt slaan.
 
-💪 En wil je iets veranderen of toevoegen in het `custom` field van een `person`? Dan heb je bij Directus [een `PATCH` request](https://directus.io/docs/api/items#update-an-item) nodig.
+💪 En wil je iets veranderen of toevoegen in het `custom` field van een `person`? Dan heb je bij Directus [een `PATCH` request](https://directus.io/docs/api/items#update-an-item) nodig. Een [`DELETE` request](https://directus.io/docs/api/items#delete-an-item) kun je gebruiken om items weer te verwijderen.
 
 Zet 'm op!
