@@ -80,7 +80,7 @@ We gaan drie korte oefeningen doen, die steeds complexer worden. We beginnen met
 
 Maak een simpele HTML pagin aan in je Learning Journal. 
 
-VOeg een formulier met de `method` `POST` toe
+Voeg een formulier met de `method` `POST` toe
 
 Voeg een `action` toe naar de url `https://krijnhoetmer.nl/fdnd` 
 
