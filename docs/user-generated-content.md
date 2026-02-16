@@ -107,7 +107,7 @@ In de oefening gaan je een pagina met een formulier toevoegen aan je squad page 
 
 5. Voer `npm start` uit, open de pagina die je net aangemaakt hebt (ga dus naar `/berichten` in je browser), en controleer of je daar jouw formulier te zien krijgt. Probeer ook wat content toe te voegen. Als het goed is, krijg je een foutmelding, dat je nog niet kunt `POST`en naar deze pagina. Dit komt doordat je nog geen _`POST` route_ hebt aangemaakt in je server. De server luistert alleen naar _`GET` requests_ voor die URL.
 
-In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
+7. In `server.js` staat al een een `POST` route naar `/` klaar. Pas deze route, en de redirect erbinnen, aan naar `/berichten`. Herstart je server, en controleer of je formulier nu wel verstuurd kan worden.
 
 💪 Om de boel ook echt dynamisch te maken, kun je in de `POST` route nu `request.body.message` toevoegen aan de `messages` array. Herstart hierna je server om je allereerste `User Generated Content` te testen.
 
