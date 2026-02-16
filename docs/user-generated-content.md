@@ -50,7 +50,7 @@ Bij het maken van een formulier kun je de method veranderen naar `method="POST"`
 
 Waarschijnlijk verandert door het versturen van dit formulier iets op de server, of in een database. Misschien wordt in het profiel van de bezoeker bijvoorbeeld bijgehouden welke producten leuk worden gevonden. Dit is wat groter dan de micro-interacties die we in Sprint 5 introduceerden.
 
-Een ander voorbeeld, waarmee je bijvoorbeeld een reactie kunt achterlaten onder een nieuwsbericht. Ook dit zal iets in een database toevoegen, en ook voor andere bezoekers van dat nieuwsbericht de data veranderen:
+Hieronder staat een voorbeeld van een formulier waarmee je een reactie kunt achterlaten onder een nieuwsbericht. Dit zal iets in een database toevoegen <!--, als je daarna deze pagina weer laadt krijg je een extra daarna ook voor andere bezoekers van dat nieuwsbericht de data veranderen-->:
 
 ```html
 <form action="/nieuws/goud-en-zilver-op-de-500-meter" method="POST">
