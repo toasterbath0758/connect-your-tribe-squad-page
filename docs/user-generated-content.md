@@ -37,7 +37,7 @@ Voor elke URL die je opvraagt, moet je ook bepalen met welke _method_ dat gebeur
 </form>
 ```
 
-Als je met dit zoekformulier op “fdnd” zoekt, zal de browser na het kliken op de button naar `/?zoekterm=fdnd` gaan, en een `GET` request uitvoeren. Dit formulier verandert niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
+Als je met dit zoekformulier op “fdnd” zoekt, zal de browser na het kliken op de button naar de `action="/"` gaan en de query parameter /?zoekterm=fdnd` toevoegen, en een `GET` request uitvoeren. Dit formulier verandert niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
 
 ### `POST`
 Bij het maken van een formulier kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets naar de server gaat sturen. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
@@ -78,7 +78,15 @@ We gaan drie korte oefeningen doen, die steeds complexer worden. We beginnen met
 
 ### Oefening 1: een formulier met een POST
 
-Maak als eerste oefening in simpele HTML een pagina die een bericht verstuurt naar een server. Maak een formulier, een tekstveld genaamd `message` en POST deze naar [TODO].
+Maak een simpele HTML pagin aan in je Learning Journal. 
+
+VOeg een formulier met de `method` `POST` toe
+
+Voeg een `action` toe naar de url `https://krijnhoetmer.nl/fdnd` 
+
+en een tekstveld genaamd `message` en POST deze naar [TODO].
+
+
 
 #### Bronnen
 
