@@ -40,7 +40,7 @@ Voor elke URL die je opvraagt, moet je ook bepalen met welke _method_ dat gebeur
 Als je met dit zoekformulier op “fdnd” zoekt, zal de browser na het kliken op de button naar `/?zoekterm=fdnd` gaan, en een `GET` request uitvoeren. Dit formulier verandert niks op de server; het haalt alleen zoekresultaten op, en laat die zien.
 
 ### `POST`
-Bij het maken van een `<form action="/een-url">` kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets gaat _veranderen_. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
+Bij het maken van een formulier kun je de method veranderen naar `method="POST"`, waarmee je aangeeft dat je iets naar de server gaat sturen. Je wilt nieuwe gegevens opslaan, een bericht toevoegen, een like uitdelen aan een recept, of een product toevoegen aan je wensenlijst. Al deze acties zorgen voor _User Generated Content_, en daarvoor hebben we dus _`POST` requests_ nodig.
 
 ```html
 <form action="/product/3" method="POST">
