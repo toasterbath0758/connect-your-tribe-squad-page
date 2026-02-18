@@ -52,7 +52,7 @@ Voor het opleveren zorg je er voor dat de website het goed doet en dat anderen d
 ### Presentatie
 Tijdens de expo gaan jullie de squadpage presenteren. Bespreek hoe jullie de website presenteren en wat daar voor nodg is. Welke onderdelen willen jullie laten zien? En in welke volgorde? 
 
-Wat moet er nog gebeueren om dit alles goed te presenteren? Maak taken aan in jullie projectboard zodat iedereen weet wat er nog moet gebeuren en wie wat doet. 
+Wat moet er nog gebeuren om dit alles goed te presenteren? Maak taken aan in jullie projectboard zodat iedereen weet wat er nog moet gebeuren en wie wat doet. 
 
 ### Readme
 Met je team laat je de website ook zien in de Readme. 
