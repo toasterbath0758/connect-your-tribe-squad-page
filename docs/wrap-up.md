@@ -1,6 +1,7 @@
 
 # Connect Your Tribe - Squad page
 
+
 ## Wrap-up
 Tijdens de *Wrap up* ga je met je team bekijken en bespreken hoe ver jullie zijn, taken verdelen en plannen voor de oplevering van vrijdag.
 
@@ -45,15 +46,20 @@ Helpdesk voor interface vragen
 - [De Daily standup meeting: uitleg en tips](https://scrumguide.nl/daily-standup-meeting/)
 
 ## Voorbereiden oplevering
-Voor het opleveren zorg je er voor dat anderen die de repo bekijken goed snappen hoe de website eruit ziet en hoe de code werkt. 
+Voor het opleveren zorg je er voor dat de website het goed doet en dat anderen die de repo bekijken goed snappen hoe de website eruit ziet en hoe de code werkt. 
 
+### Presentatie
+Tijdens de expo gaan jullie de squadpage presenteren. Bespreek hoe jullie de website presenteren en wat daar voor nodg is. Welke onderdelen willen jullie laten zien? En in welke volgorde? 
+
+Wat moet er nog gebeueren om dit alles goed te presenteren? Maak taken aan in julli eprojectboard zodat iedereen weet wat er nog moet gebeuren en wie wat doet. 
 
 ### Readme
-Met je team presenteer je de website in de Readme. 
+Met je team laat je de website ook zien in de Readme. 
 In de Readme toon je het eindresultaat en leg je uit hoe de website eruit ziet en hoe het werkt.
 
 Het werkproces en hoe jullie hebben samengewerkt schrijf je **niet** in de Readme. 
 (Dat staat al in het projectboard, issues, taken etc ...)
+
 
 #### Titel
 Begin de Readme met een goede titel en een korte uitleg over de opdracht en wat jullie hebben gemaakt. 
@@ -72,6 +78,7 @@ Leg hier ook uit wat NodeJS is, wat Express is en wat Liquid doet. Verwijs naar 
 #### Installatie
 Omdat je nu een server-side project hebt gemaakt, beschrijf je in de Readme ook hoe iemand anders het project kan installeren. 
 Bij Installatie staat stap-voor-stap beschreven hoe je de development omgeving moet inrichten om aan de repository te kunnen werken. Hoe leg je aan iemand anders uit dat jullie bijvoorbeeld `npm` hebben gebruikt?
+
 
 <!--
 Voor de oplevering: wat zet je in de readme? (Reparateurs kunnen dit gebruiken voor 1.3.2)
