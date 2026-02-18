@@ -40,12 +40,13 @@ Helpdesk voor Nodejs, Express en Liquid
 Helpdesk voor interface vragen
 -->
 
-
 ### Bronnen
 
 - [De Daily standup meeting: uitleg en tips](https://scrumguide.nl/daily-standup-meeting/)
 
-## Voorbereiden oplevering
+
+
+## Oplevering voorbereiden
 Voor het opleveren zorg je er voor dat de website het goed doet en dat anderen die de repo bekijken goed snappen hoe de website eruit ziet en hoe de code werkt. 
 
 ### Presentatie
