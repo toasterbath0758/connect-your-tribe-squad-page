@@ -3,25 +3,76 @@
 <h2>Squad 1j-1i</h2>
 </section>
 
-<header>
+<header class="border-bg">
 <section class="nav">
 <li>
   <h3>
-    filter de pagina op:
+    sorteer de pagina op:
+  </h3>
+</li>
+<li>
+  <h3>
+    Naam
   </h3>
 </li>
 <li class="navKnop">
 <a href="/az">a-z</a>
 </li>
+<li class="navKnop">
+<a href="/za">z-a</a>
+</li>
+<li>
+  <h3>
+    Squad (klas)
+  </h3>
+  <li class="navKnop">
+<a href="?filter=1J">klas 1J</a>
+</li>
+<li class="navKnop">
+<a href="?filter=1I">klas 1I</a>
+</li>
+</li>
+<li>
+  <h3>
+    teams
+  </h3>
+</li>
+<li class="navKnop">
+<a href="/">All</a> 
+</li>
+<li class="navKnop">
+<a href="?filter=Cheer">cheer</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Dazzle">Dazzle</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Glow">Glow</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Harmony">Harmony</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Radiant">Radiant</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Rocket">Rocket</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Spark">Spark</a>
+</li>
+<li class="navKnop">
+<a href="?filter=Sunny">Sunny</a>
+</li>
 </section>
 </header>
 
 <ul>
-  <section class="grid-profile-section">
+  <section class="border-bg grid-profile-section">
   {% for person in persons %}
     <section class="profile-section">
 
-<article class="profile img">
+<article class="border-bg profile img">
     <li class="center">
         {% if person.mugshot %}
         <img class="img" src="https://fdnd.directus.app/assets/{{ person.mugshot }}?width=" alt="Profile picture">
@@ -31,7 +82,7 @@
     </li>
 </article>
     
-<article class="profile info">
+<article class="border-bg profile info">
   <ul>
   <li class="center">
     <a href="/student/{{ person.id }}">{{ person.name }}</a>
@@ -48,6 +99,9 @@
   <li class="center">
     <a href="/student/{{ person.id }}">{{ person.id }}</a>
   </li>
+    <li class="center">
+    <a href="/student/{{ person.id }}">{{ person.team }}</a>
+  </li>
 </ul>
 </article>
 </section>
@@ -60,3 +114,13 @@
 
 <script src="/index.js"></script>
 {% render 'partials/foot.liquid', squads: squads %}
+
+<a href="/">All</a> 
+<a href="?filter=Cheer">cheer</a>
+<a href="?filter=Dazzle">Dazzle</a>
+<a href="?filter=Glow">Glow</a>
+<a href="?filter=Harmony">Harmony</a>
+<a href="?filter=Radiant">Radiant</a>
+<a href="?filter=Rocket">Rocket</a>
+<a href="?filter=Spark">Spark</a>
+<a href="?filter=Sunny">Sunny</a>

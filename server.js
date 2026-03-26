@@ -90,7 +90,38 @@ app.get('/az', async function (request, response) {
     // 'filter[squads][squad_id][name]': '1I',
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526'
+  };
+
+   if (request.query.filter == "Cheer") {
+    params["filter[team][_eq]"] = "Cheer";
+
+  } else if (request.query.filter == "Dazzle") {
+    params["filter[team][_eq]"] = "Dazzle";
   }
+   else if (request.query.filter == "Glow") {
+    params["filter[team][_eq]"] = "Glow";
+  }
+  else if (request.query.filter == "Harmony") {
+    params["filter[team][_eq]"] = "Harmony";
+  }
+  else if (request.query.filter == "Radiant") {
+    params["filter[team][_eq]"] = "Radiant";
+  }
+
+  else if (request.query.filter == "Rocket") {
+    params["filter[team][_eq]"] = "Rocket";
+  }
+
+  else if (request.query.filter == "Spark") {
+    params["filter[team][_eq]"] = "Spark";
+  }
+  else if (request.query.filter == "Sunny") {
+    params["filter[team][_eq]"] = "Sunny";
+  }
+  else {
+    params["sort"] = "name";
+  }
+
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
 
   // En haal daarvan de JSON op
@@ -110,10 +141,11 @@ app.get('/az', async function (request, response) {
 
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
-app.post('/', async function (request, response) {
+app.post('/berichten', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van POST, redirect naar GET op /
-  response.redirect(303, '/')
+  messagesArray.push(request.body.message);
+  response.redirect(303, '/berichten')
 })
 
 
@@ -138,4 +170,15 @@ app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
+})
+
+// 1. Maak een lege array aan
+let messagesArray = []
+
+// 2. Luister naar GET requests op /berichten
+app.get('/berichten', async function (request, response) {
+  // Render meteen de messages view, en geef de messages array mee
+  response.render('messages.liquid', {
+    messages: messagesArray
+  })
 })

@@ -1,0 +1,21 @@
+{% comment %} {{ message in messages }}
+<form action="/berichten" method="POST">
+    <label>
+    <textarea name="message">wie is json</textarea>
+  </label>
+  <button type="submit">submit</button>
+</form> {% endcomment %}
+
+<ol>
+{% for message in messages %}
+   <p>{{ message }}</p>
+{% endfor %}
+</ol>
+
+<form method="POST" action="/berichten">
+   <label>
+     Nieuw bericht:
+     <input type="text" name="message" required>
+   </label>
+   <button type="submit">Voeg toe!</button>
+</form>
